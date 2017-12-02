@@ -35,10 +35,24 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
-    // OAuth
+    // OAuth-facebook
     'facebook' => [
         'client_id' => '146627585975608',
         'client_secret' => 'd57f44fb589febd76e3e3551c004346a',
         'redirect' => 'http://localhost:8000/auth/facebook/callback',
+    ],
+
+    // OAuth-twitter
+    'twitter' => [
+        'client_id' => '3FvoqgvltQlMid7o0F7w7HngD',
+        'client_secret' => 'xHxOScpXLZzSeLYdaelfWcoNzIwDnfxgW95fjflJaLj7xZoCAf',
+        'redirect' => 'http://localhost:8000/auth/twitter/callback',
+    ],
+
+    // OAuth-google
+    'google' => [
+        'client_id' => '655358617148-lqhntnb4fjercabcps13msifr2g8dc9s.apps.googleusercontent.com',
+        'client_secret' => 'rxeVFc6qXQ0aDqd2QLOgD5WM',
+        'redirect' => 'http://localhost:8000/auth/google/callback',
     ],
 ];
