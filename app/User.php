@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    function socialProvider(){
+        // 建立關聯
+        return $this->hasMany(SocialProvider::class);
+    }
 }
