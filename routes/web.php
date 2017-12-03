@@ -18,3 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// OAuth route
+Route::get('login/facebook', 'Auth\RegisterController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
