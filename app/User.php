@@ -27,8 +27,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    // 與SocialProvider建立關聯
     function socialProvider(){
-        // 建立關聯
         return $this->hasMany(SocialProvider::class);
     }
 }
