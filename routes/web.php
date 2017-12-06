@@ -22,3 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // OAuth route
 Route::get('auth/facebook', 'Auth\RegisterController@redirectToProvider');
 Route::get('auth/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
+
+// social login route
+Route::get('login/{social}','Auth\LoginController@socialLogin')
+    ->where('social','twitter|facebook|linkedin|google|github');
