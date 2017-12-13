@@ -20,8 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // fb login
-Route::get('auth/fb', 'Auth\FBController@redirectToProvider');
-Route::get('auth/fb/callback', 'Auth\FBController@handleProviderCallback');
+Route::get('auth/facebook', 'Auth\FBController@redirectToProvider');
+Route::get('auth/facebook/callback', 'Auth\FBController@handleProviderCallback');
 
 // google login
 Route::get('auth/google','Auth\GoogleController@redirectToProvider');

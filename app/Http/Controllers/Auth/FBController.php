@@ -18,7 +18,25 @@ class FBController extends Controller
     public function handleProviderCallback()
     {
         $socialite_user = Socialite::driver('facebook')->user();
-        return $socialite_user->getEmail();
-        // $user->token;
+        $fb_user_id = $socialite_user->getId();
+        $fb_name = $socialite_user->getName();
+        $fb_email = $socialite_user->getEmail();
+        $fb_avatar = $socialite_user->getAvatar();
+
+        $user = User::where('facebook_id',$fb_user_id)->first();
+
+        if(!$user){
+            $user = User::create([
+                'facebook_id' => $fb_user_id,
+                'email' => $fb_email,
+                'password' => $fb_user_id,
+                'name' => $fb_name,
+                'google_email' => $fb_email,
+                'avatar' => $fb_avatar
+            ]);
+        }
+
+        Auth::loginUsingId($user->id);
+        return redirect('/home');
     }
 }
