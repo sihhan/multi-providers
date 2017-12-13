@@ -19,13 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-// OAuth route
-// Route::get('auth/facebook', 'Auth\RegisterController@redirectToProvider');
-// Route::get('auth/facebook/callback', 'Auth\RegisterController@handleProviderCallback');
+// fb login
+Route::get('auth/fb', 'Auth\FBController@redirectToProvider');
+Route::get('auth/fb/callback', 'Auth\FBController@handleProviderCallback');
 
-// social login route
-Route::get('login/{social}','Auth\LoginController@socialLogin')
-    ->where('social','twitter|facebook|linkedin|google|github');
-
-Route::get('login/{social/callback}','Auth\LoginController@handleProviderCallback')
-    ->where('social','twitter|facebook|linkedin|google|github');
+// google login
+Route::get('auth/google','Auth\GoogleController@redirectToProvider');
+Route::get('auth/google/callback','Auth\GoogleController@handleProviderCallback');

@@ -40,20 +40,20 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function socialLogin($social){
-        return Socialite::drive($social)->redirect();
+    public function redirectToProvider()
+    {
+        return Socialite::driver('github')->redirect();
     }
 
-    public function handleProviderCallback($social){
-        $userSocial = Socialite::drive($social)-user();
-        $user = User::where(['email' => $userSocial->getEmail()])->first();
+    /**
+     * Obtain the user information from GitHub.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function handleProviderCallback()
+    {
+        $user = Socialite::driver('github')->user();
 
-        if($user){
-            Auth::login($user);
-            return redirect()->action('HomeController@index');
-        }else{
-            return view('auth.register',['name' => $userSocial->getName(),
-                'email' => $userSocial->getEmail()]);
-        }
+        // $user->token;
     }
 }

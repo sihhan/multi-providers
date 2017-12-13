@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','avatar','facebook_id','fb_email','google_id','google_email'
     ];
 
     /**
@@ -26,9 +26,4 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-
-    // 與SocialProvider建立關聯
-    function socialProvider(){
-        return $this->hasMany(SocialProvider::class);
-    }
 }
